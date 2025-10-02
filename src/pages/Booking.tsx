@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Booking = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
   const celebrities = [
@@ -142,7 +144,10 @@ const Booking = () => {
               </CardContent>
               
               <CardFooter className="gap-2">
-                <Button className="flex-1 bg-gradient-primary hover:bg-primary-dark">
+                <Button 
+                  className="flex-1 bg-gradient-primary hover:bg-primary-dark"
+                  onClick={() => navigate(`/booking/${celebrity.id}`)}
+                >
                   Book Now
                 </Button>
                 <Button variant="outline" size="icon">
